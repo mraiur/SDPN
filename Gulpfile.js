@@ -16,6 +16,8 @@ var dirLib          = require('./lib/dir');
 var Config          = require('./lib/config');
 var Theme           = Config.get('theme');
 
+console.log("Building theme", Theme );
+
 var tplData = {};
 var development = true;
 var tasks = ['theme-sass', 'theme-fonts', 'images', 'theme-images', 'theme-views'];

@@ -79,6 +79,14 @@ h5{
     .extended-details{
         width:50%;
         margin:0 auto;
+
+        h3{
+            position: relative;
+            color: green;
+        }
+        pre{
+            display: none;
+        }
     }
 
     .social-icons{
