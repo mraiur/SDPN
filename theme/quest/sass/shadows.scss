@@ -1,0 +1,11 @@
+@mixin c_box-shadow-grey($x, $y, $r, $spread, $alpha){
+    -webkit-box-shadow: $x $y $r $spread rgba(0,0,0, $alpha);
+    -moz-box-shadow: $x $y $r $spread rgba(0,0,0, $alpha);
+    box-shadow: $x $y $r $spread rgba(0,0,0, $alpha);
+}
+
+@mixin c_box-shadow-grey-inner($x, $y, $r, $spread, $alpha){
+    -webkit-box-shadow: inset $x $y $r $spread rgba(0,0,0, $alpha);
+    -moz-box-shadow: inset $x $y $r $spread rgba(0,0,0, $alpha);
+    box-shadow: inset $x $y $r $spread rgba(0,0,0, $alpha);
+}      

@@ -7,32 +7,39 @@
     </head>
     <body>
         <div class="profile">
-            <div class="name">
-                <h5 class="dark-text"><%- title %></h5>
-            </div>
-            <figure class="profile-pic">
-                 <img src="images/profile.png" alt="">
-            </figure>
+            <div class="center-profile">
+                <figure class="profile-pic">
+                     <img src="images/profile.png" alt="">
+                </figure>
 
-            <div class="details">
-                <div class="position"><%- description.short_description %></div>
-            </div>
+                <div class="name">
+                    <h5 class="dark-text"><%- title %></h5>
+                </div>
 
-            <div class="social-icons">
-                <ul>
-                    <li><a href="<%= github %>"><i class="fa fa-github"></i></a></li>
-                    <li><a href="<%= bitbucket %>"><i class="fa fa-bitbucket"></i></a></li>
-                    <li><a href="<%= facebook %>"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="<%= twitter %>"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="<%= linkedin %>"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="<%= googlePlus %>"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="<%= blog %>"><i class="fa fa-rss"></i></a></li>
-                </ul>
+
+                <div class="details">
+                    <div class="position"><%- description.short_description %></div>
+                </div>
+
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="<%= github %>"><i class="fa fa-github"></i></a></li>
+                        <li><a href="<%= bitbucket %>"><i class="fa fa-bitbucket"></i></a></li>
+                        <li><a href="<%= facebook %>"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="<%= twitter %>"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="<%= linkedin %>"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="<%= googlePlus %>"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="<%= blog %>"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="extended-details">
-                <%- description.bio %>
-            </div>
-            <div class="system-information"><a href="https://github.com/mraiur/SDPN" target="_blank">Build with mraiur@SDPN</a> with Quest v1.0 theme.</div>
         </div>
+
+        <div class="extended-details">
+            <%- description.bio %>
+        </div>
+
+        <div class="system-information"><a href="https://github.com/mraiur/SDPN" target="_blank">Build with mraiur@SDPN</a> with Quest v1.0 theme.</div>
     </body>
 </html>

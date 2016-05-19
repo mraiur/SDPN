@@ -1,4 +1,5 @@
 @import "font-awesome/scss/font-awesome";
+@import "shadows";
 
 * {
     padding:0px;
@@ -8,7 +9,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     &::before, &::after{
-    box-sizing: border-box;
+        box-sizing: border-box;
     }
 }
 
@@ -31,91 +32,177 @@ h5{
     font-size:20px;
 }
 
+.clearfix{
+    clear: both;
+    margin: 0px;
+    height: 0px;
+    padding: 0px;
+}
+
 .profile{
-    position:relative;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
     border-radius: 4px;
     overflow:hidden;
-    margin-bottom: 35px;
-
-    .name{
-        display:inline-block;
-        text-align: center;
-        padding:20px 0px 15px 0px;
-        width: 100%;
-    }
-
-    .profile-pic{
-        border-radius: 50%;
-        width: 174px;
-        height: 174px;
-        margin: auto auto 25px;
-        overflow: hidden;
-    }
 
 
-    .profile-pic img{
-        width:100%;
-        height:100%;
-        vertical-align: middle;
-        border: 0px none;
-    }
+    .center-profile{
+        $fromColor: #fcfcfb;
+        $toColor: #bab6b1;
 
-    .details{
-        display: inline-block;
-        padding-bottom:5px;
-        text-align: center;
-        font-size:13px;
-        line-height:20px;
-        padding: 15px;
-        width:100%;
-        transition: all 500ms ease 0s;
+        width: 600px;
+        height: 200px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
 
-        .position{
-            font-size: 16px;
+        border-radius: 85px;
+        border: solid #fcd3a4 1px;
+
+
+        background: fromColor; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, $fromColor, $toColor); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, $fromColor, $toColor); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, $fromColor, $toColor); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, $fromColor, $toColor); /* Standard syntax */
+
+        .profile-pic{
+            border-radius: 50%;
+            width: 174px;
+            height: 174px;
+            overflow: hidden;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
+            img{
+                width:100%;
+                height:100%;
+                vertical-align: middle;
+                border: 0px none;
+            }
         }
-    }
 
-
-    .extended-details{
-        width:50%;
-        margin:0 auto;
-
-        h3{
-            position: relative;
-            color: green;
+        .name{
+            display:inline-block;
+            position: absolute;
+            top:0px;
+            left: 200px;
+            padding:20px 0px 15px 0px;
+            width: 200px;
         }
-        pre{
-            display: none;
-        }
-    }
 
-    .social-icons{
-        margin:25px auto;
-        width:354px;
-        ul{
-           list-style: outline none disc;
-           padding-left: 0px;
-           li{
-               display: inline-block;
-               line-height: 32px;
-               margin: 6px;
-               a{
-                   font-size:20px;
-                   border-radius: 16px;
-                   text-align:center;
-                   width: 32px;
-                   height: 32px;
-                   display:block;
-                   border:solid 1px #C9C9C9;
-                   transition: border-color 1s ease;
-                   transition: background-color 1s ease;
+
+        .details{
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            font-size:13px;
+            line-height:20px;
+
+            .position{
+                font-size: 16px;
+            }
+        }
+
+
+
+        .social-icons{
+            position: absolute;
+            bottom: 5px;
+            left: 200px;
+            width:354px;
+
+            ul{
+               list-style: outline none disc;
+               padding-left: 0px;
+               li{
+                   display: inline-block;
+                   line-height: 32px;
+                   margin: 4px;
+                   border: solid #af6918 1px;
+                   transition: all 0.5s ease;
+
+                   a{
+                       font-size:20px;
+                       text-align:center;
+                       width: 32px;
+                       height: 32px;
+                       display:block;
+                       border:solid 1px #bd792a;
+
+                       transition: all 0.5s ease;
+                   }
 
                    &:hover{
-                       border-color: #00BFFF;
-                       background-color: #EFEFEF;
+                       border-radius: 10px;
+                       @include c_box-shadow-grey(4px, 9px, 20px, -15px, 0.75);
+
+                       a{
+                           border-radius: 15px;
+                           border-color: #00BFFF;
+                           background-color: #EFEFEF;
+                       }
                    }
                }
            }
-       }
+        }
+    }
+
+}
+
+.extended-details{
+    width:50%;
+    margin: 20px auto;
+    padding-bottom: 300px;
+
+    h3{
+        border: solid #af6918 1px;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0px 0px 20px 0px;
+
+        @include c_box-shadow-grey(4px, 9px, 20px, -15px, 0.75);
+
+        &:before{
+            content: "\f156";
+            @extend .fa;
+            padding: 0px 10px 0px 10px;
+        }
+
+        &:hover{
+
+        }
+
+        &:hover + pre{
+            opacity: 1;
+        }
+    }
+    pre{
+        opacity: 0.1;
+        margin-left: 50px;
+        transition: all 1s ease;
+
+        white-space: normal;
+        border: solid #af6918 1px;
+        border-radius: 5px;
+        padding: 10px;
+
+        & ~p{
+            height: 8px;
+        }
+    }
+}
+.system-information{
+    text-align: center;
+    font-size: 12px;
+    a{
+        font-weight: bold;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
     }
 }
