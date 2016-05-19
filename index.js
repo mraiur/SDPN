@@ -11,5 +11,5 @@ var server = httpServer.createServer({
       'Access-Control-Allow-Credentials': 'true'
     }
   });
-
-  server.listen( Config.get('port') );
+console.log("starting server on port", Config.get('port'));
+server.listen( Config.get('port'));
