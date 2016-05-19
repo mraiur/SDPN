@@ -18,6 +18,7 @@ var Theme           = Config.get('theme');
 
 var tplData = {};
 var development = true;
+var tasks = ['theme-sass', 'theme-fonts', 'images', 'theme-images', 'theme-views'];
 
 gulp.task('theme-images', function(){
     gulp.src('./theme/'+Theme+'/img/**/*{png,gif,jpg,jpeg}').pipe( gulp.dest( __dirname+'/build/img') );
@@ -102,7 +103,7 @@ gulp.task('theme-views', ['tplData'], function(next){
     next();
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', tasks, function(){
     gulp.watch('./theme/'+Theme+'/sass/**/*.scss', ['theme-sass']);
     gulp.watch('./theme/'+Theme+'/view/**/*.ejs', ['theme-views']);
     gulp.watch('./theme/'+Theme+'/img/**/*.{png,gif,jpg,jpeg}', ['theme-images']);
@@ -111,4 +112,4 @@ gulp.task('watch', function(){
     gulp.watch('./information/**/*.{png,gif,jpg,jpeg}', ['images']);
 });
 
-gulp.task('default', ['theme-sass', 'theme-fonts', 'images', 'theme-images', 'theme-views']);
+gulp.task('default', tasks);
