@@ -1,10 +1,5 @@
 var notifier        = require('node-notifier');
-//var marked          = require('marked');
-//var markdown        = require('markdown').markdown;
-var showdown        = require('showdown');
-var mdConverter     = new showdown.Converter({
-    simplifiedAutoLink: true
-});
+var markdown        = require('node-markdown').Markdown;
 var dot             = require('dot-object');
 var async           = require('async');
 var fs              = require('fs');
@@ -62,31 +57,15 @@ gulp.task('tplData', function(next){
 
     function toMarkdown(callback){
         var me = this;
-        /*var options = {
-          renderer: new marked.Renderer(),
-          gfm: true,
-          tables: true,
-          breaks: false,
-          pedantic: false,
-          sanitize: false,
-          smartLists: true,
-          smartypants: false
+        var allowedTags = 'p|strong|span|a|img';
+        var restrinctHtmlTags = false;
+        var allowedAttributes = {
+            'a':'href|style',
+            'img': 'src',
+            '*': 'title|style'
         };
-        marked( me.mk, options, function (err, content) {
-            if(!err){
-                tplData[me.key] = content;
-            } else {
-                console.warn("markdown error", me.key, err);
-                tplData[me.key] = null;
-            }
-            callback();
-        });*/
 
-        //tplData[me.key] = markdown.toHTML( me.mk );
-
-
-         tplData[me.key]      = mdConverter.makeHtml( me.mk );
-        fs.writeFileSync("./mk-tmp/"+me.key, tplData[me.key]);
+        tplData[me.key] = markdown(  me.mk, restrinctHtmlTags, allowedTags, allowedAttributes );
         callback();
     }
 
@@ -106,7 +85,6 @@ gulp.task('tplData', function(next){
         if( dirLib.fileExists( "./information/information.json") ){
             tplData = _.merge(tplData, require("./information/information.json") );
         }
-        console.log("tplData", tplData);
 
         dot.object(tplData);
         next();
