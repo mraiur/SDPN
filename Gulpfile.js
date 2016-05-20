@@ -1,5 +1,4 @@
 var notifier        = require('node-notifier');
-var markdown        = require('node-markdown').Markdown;
 var dot             = require('dot-object');
 var async           = require('async');
 var fs              = require('fs');
@@ -53,45 +52,7 @@ gulp.task('theme-sass', function () {
 });
 
 gulp.task('tplData', function(next){
-    var dirData = dirLib.mapTree('./information');
-    var informationFiles = dot.dot( dirData );
-    var markdownList = [];
-    var i;
-
-    function toMarkdown(callback){
-        var me = this;
-        var allowedTags = 'p|strong|span|a|img';
-        var restrinctHtmlTags = false;
-        var allowedAttributes = {
-            'a':'href|style',
-            'img': 'src',
-            '*': 'title|style'
-        };
-
-        tplData[me.key] = markdown(  me.mk, restrinctHtmlTags, allowedTags, allowedAttributes );
-        callback();
-    }
-
-    for( i in informationFiles )
-    {
-
-        if( i.substr(-3) === ".md")
-        {
-            var key = i.substr(0, i.length-3);
-            var markdownString = fs.readFileSync(informationFiles[i], 'utf8');
-
-            markdownList.push( toMarkdown.bind({ key:key, mk: markdownString }) );
-        }
-    }
-
-    async.parallel(markdownList, function(){
-        if( dirLib.fileExists( "./information/information.json") ){
-            tplData = _.merge(tplData, require("./information/information.json") );
-        }
-
-        dot.object(tplData);
-        next();
-    });
+    tplData = dirLib.mapTree( './information', "information");
 });
 
 gulp.task('theme-views', ['tplData'], function(next){

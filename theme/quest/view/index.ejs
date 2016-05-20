@@ -37,7 +37,14 @@
         </div>
 
         <div class="extended-details">
-            <%- description.bio %>
+            <ul>
+                <% for(var i in description.skill_title ) %>
+                <li class="row">
+                    <h2>1</h2>
+                    <h3><%- description.skill_title[i] %></h3>
+                </li>
+                <% } %>
+            </ul>
         </div>
 
         <div class="system-information"><a href="https://github.com/mraiur/SDPN" target="_blank">Build with mraiur@SDPN</a> with Quest v1.0 theme.</div>
