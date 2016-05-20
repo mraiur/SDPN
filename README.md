@@ -2,10 +2,10 @@ Most of the developer dont have time to put their pages because of lack of time.
 This is a VERY simple page just for you to describe your self with few sentences.
 
 ## Setup
-1. Copy the config.example.php to config.php and fill your information.
-2. Put your profile picture in information/profile.png
-3. run :
-
+1. View configuration options from config.default.json and set them in config.json.
+2. Based on the skin/theme you are using put the assets in theme/default/ folder.
+3. You can add a json file to be "exposed" to the ejs themplate or markdown files.
+4. run :
 
 Use the build version of the CSS ( build ) or build your own.
 
