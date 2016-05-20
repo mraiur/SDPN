@@ -57,6 +57,7 @@ gulp.task('tplData', function(next){
     {
         fs.writeFileSync( './build/tplData.json', JSON.stringify(tplData, null, " ") );
     }
+    next();
 });
 
 gulp.task('theme-views', ['tplData'], function(next){

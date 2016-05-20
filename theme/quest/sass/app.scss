@@ -1,5 +1,14 @@
 @import "font-awesome/scss/font-awesome";
 @import "shadows";
+@import "backgrounds";
+
+$borderColor: #af6918;
+
+body{
+    //transition: all 0.5s ease;
+    background-color: black;
+    animation: background_color_change 500ms 16 normal;
+}
 
 * {
     padding:0px;
@@ -48,8 +57,9 @@ h5{
 
 
     .center-profile{
-        $fromColor: #fcfcfb;
-        $toColor: #bab6b1;
+
+        $fromColor: #ffd7a3;
+        $toColor: #af6300;
 
         width: 600px;
         height: 200px;
@@ -57,15 +67,11 @@ h5{
         margin: 0 auto;
         position: relative;
 
-        border-radius: 85px;
-        border: solid #fcd3a4 1px;
+        border-top-left-radius: 85px;
+        border-top-right-radius: 85px;
+        border: solid $borderColor 1px;
 
-
-        background: fromColor; /* For browsers that do not support gradients */
-        background: -webkit-linear-gradient(left top, $fromColor, $toColor); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(bottom right, $fromColor, $toColor); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(bottom right, $fromColor, $toColor); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(to bottom right, $fromColor, $toColor); /* Standard syntax */
+        @include bgr-color-background($fromColor, $toColor);
 
         .profile-pic{
             border-radius: 50%;
@@ -76,11 +82,48 @@ h5{
             top: 10px;
             left: 10px;
 
+            border:inset #fae6cd 5px;
+            border-style: double;
+
             img{
                 width:100%;
                 height:100%;
                 vertical-align: middle;
                 border: 0px none;
+            }
+        }
+
+        .exp-container{
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            background-color: #151622;
+            height: 25px;
+            width: 340px;
+
+            .label{
+                position: absolute;
+                padding-top: 4px;
+                width: 100%;
+                height: 25px;
+                top: 0px;
+                left: 0px;
+                text-align: center;
+                z-index: 20;
+                color: white;
+                letter-spacing: 1.2;
+            }
+            .exp-bar{
+                .bar{
+                    position: absolute;
+                    z-index: 0;
+                    top: 2px;
+                    left: 0px;
+                    background-color: rgb(9, 38, 189);
+                    opacity: 0.5;
+                    width: 70%;
+                    height: 20px;
+                }
             }
         }
 
@@ -131,17 +174,17 @@ h5{
                        height: 32px;
                        display:block;
                        border:solid 1px #bd792a;
-
                        transition: all 0.5s ease;
+                       i{
+                           color: black;
+                       }
                    }
 
                    &:hover{
-                       border-radius: 10px;
+                       border-radius: 15px;
                        @include c_box-shadow-grey(4px, 9px, 20px, -15px, 0.75);
-
                        a{
                            border-radius: 15px;
-                           border-color: #00BFFF;
                            background-color: #EFEFEF;
                        }
                    }
@@ -157,43 +200,49 @@ h5{
     margin: 20px auto;
     padding-bottom: 300px;
 
-    h3{
-        border: solid #af6918 1px;
-        border-radius: 5px;
-        cursor: pointer;
-        padding: 10px;
-        margin: 0px 0px 20px 0px;
+    ul{
+        list-style: outline none disc;
+        padding-left: 0px;
 
-        @include c_box-shadow-grey(4px, 9px, 20px, -15px, 0.75);
 
-        &:before{
-            content: "\f156";
-            @extend .fa;
-            padding: 0px 10px 0px 10px;
-        }
+        .row{
+            display: inline-block;
+            line-height: 32px;
+            margin: 4px;
+            width: 100%;
 
-        &:hover{
+            transition: all 0.5s ease;
+            color: white;
 
-        }
+            .skill-name{
+                $bgrColor1 : #ffd7a3;
+                $bgrColor2 :  #916c3b;
+                @include c_box-shadow(4px, 9px, 20px, -15px, rgb(244, 116, 116))
 
-        &:hover + pre{
-            opacity: 1;
+                @include bgr-color-background($bgrColor1, $bgrColor2);
+
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border: solid $borderColor 1px;
+                i{
+                    padding: 8px;
+                    margin: 8px;
+                }
+
+                &:hover{
+                    @include bgr-color-background(bgrColor2, $bgrColor1);
+                }
+            }
+            .skill-description{
+                border: solid $borderColor 1px;
+                padding:8px 30px 10px 30px;
+                border-top: 0px;
+                background-color: #5c5a58;
+
+            }
         }
     }
-    pre{
-        opacity: 0.1;
-        margin-left: 50px;
-        transition: all 1s ease;
 
-        white-space: normal;
-        border: solid #af6918 1px;
-        border-radius: 5px;
-        padding: 10px;
-
-        & ~p{
-            height: 8px;
-        }
-    }
 }
 .system-information{
     text-align: right;

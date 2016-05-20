@@ -1,0 +1,33 @@
+$bodyBgrFromColor: #120202;
+$bodyBgrToColor: #000000;
+
+
+$bodyBgrFromColor2: #120202;
+$bodyBgrToColor2: #090909;
+
+@mixin bgr-color-background($fromColor, $toColor){
+    background: $fromColor;
+    background: -webkit-linear-gradient(left top, $toColor, $fromColor);
+    background: -o-linear-gradient(bottom right, $toColor, $fromColor);
+    background: -moz-linear-gradient(bottom right, $toColor, $fromColor );
+    background: linear-gradient(to bottom right, $toColor, $fromColor);
+}
+
+@-webkit-keyframes background_color_change {
+	from {
+        @include bgr-color-background($bodyBgrFromColor, $bodyBgrToColor);
+    }
+	to {
+        @include bgr-color-background($bodyBgrToColor, $bodyBgrFromColor);
+    }
+}
+
+
+@-webkit-keyframes background_color_change {
+	from {
+        @include bgr-color-background($bodyBgrFromColor2, $bodyBgrToColor2);
+    }
+	to {
+        @include bgr-color-background($bodyBgrToColor2, $bodyBgrFromColor2);
+    }
+}

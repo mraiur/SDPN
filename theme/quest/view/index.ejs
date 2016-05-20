@@ -18,7 +18,14 @@
 
 
                 <div class="details">
-                    <div class="position"><%- description.short_description %></div>
+                    <div class="position"><%- description.short %></div>
+                </div>
+
+                <div class="exp-container">
+                    <div class="label">Experience</div>
+                    <div class="exp-bar">
+                        <div class="bar"></div>
+                    </div>
                 </div>
 
                 <div class="social-icons">
@@ -38,15 +45,15 @@
 
         <div class="extended-details">
             <ul>
-                <% for(var i in description.skill_title ) %>
+                <% for(var i in description.skill ) { %>
                 <li class="row">
-                    <h2>1</h2>
-                    <h3><%- description.skill_title[i] %></h3>
+                    <div class="skill-name"><i class="fa fa-inr"></i> <%- skill_title[i] %></div>
+                    <div class="skill-description"><%- description.skill[i] %></div>
                 </li>
                 <% } %>
             </ul>
         </div>
 
-        <div class="system-information"><a href="https://github.com/mraiur/SDPN" target="_blank">Build with mraiur@SDPN</a> with Quest v1.0 theme.</div>
+        <div class="system-information"><a href="https://github.com/mraiur/SDPN" target="_blank">Build with mraiur@SDPN</a> with Quest v1.0.1 theme.</div>
     </body>
 </html>
