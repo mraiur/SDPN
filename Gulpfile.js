@@ -53,6 +53,10 @@ gulp.task('theme-sass', function () {
 
 gulp.task('tplData', function(next){
     tplData = dirLib.mapTree( './information', "information");
+    if( development )
+    {
+        fs.writeFileSync( './build/tplData.json', JSON.stringify(tplData, null, " ") );
+    }
 });
 
 gulp.task('theme-views', ['tplData'], function(next){
